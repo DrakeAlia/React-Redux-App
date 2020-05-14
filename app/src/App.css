@@ -1,0 +1,31 @@
+.App-header {
+  background-color: rgb(245,245,220);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(106,90,205)
+}
+
+div.error {
+  color: red;
+}
+
+.row {
+  
+  display: flex;
+  align-items: center;
+  width: 600px;
+}
+
+.column {
+  width: 100%;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0;
+  padding: 1%;
+  text-align: center;
+}
