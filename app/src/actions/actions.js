@@ -1,25 +1,18 @@
-import axios from 'axios'; 
+import axios from "axios";
 
-// three action types our exported for use by the reducer
-export const FETCH_SHOW_START = 'FETCH_SHOW_START'; 
-export const FETCH_SHOW_SUCCESS = 'FETCH_SHOW_SUCCESS';
-export const FETCH_SHOW_FAIL = 'FETCH_SHOW_FAIL';
+export const FETCH_DATA = "FETCH_DATA";
+export const UPDATE_DATA = "UPDATE_DATA";
+export const SET_ERROR = "SET_ERROR";
 
-// getTVShow fetches data from the api and dispatches the action creator for use by the TVCard component
-export const getTVShow = () => dispatch => { 
-    const generateNumber = (min, max) => { 
-        let num = 1;
-        num = Math.floor(Math.random()*(max-min+1)+min);
-        return num;
-    }
-
-    console.log(random);
-    dispatch({ type: FETCH_SHOW_START });
+export const getData = () => dispatch => {
+    dispatch({ type: FETCH_DATA });
     axios
-        .get(`https://api.themoviedb.org/discover/movie?sort_by=popularity.desc`)
-        .then(res => {
-            console.log(res.data);
-            dispatch({ type: FETCH_SHOW_SUCCESS, payload: res.data});
+        .get("https://api.pokemontcg.io/v1/cards")
+        .then(response => {
+            dispatch({ type: UPDATE_DATA, payload: response.data.cards})
         })
-        .catch(err => { dispatch({ type: FETCH_SHOW_FAIL, payload: err })});
-}
+        .catch(err => {
+            console.error("Error fetching data from api: ", err)
+            dispatch({ type: SET_ERROR, payload: "Error fetching data from api"})
+    })
+} 

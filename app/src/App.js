@@ -1,15 +1,23 @@
 import React from 'react';
-
-import TVCard from './components/TVCard'; // imported the TVCard component for rendering within the App component
-
 import './App.css';
+import Card from "./components/Card";
+import CardList from "./components/CardList";
+
+
 
 function App() {
-  return (
+    return (
+
     <div className="App">
-      <h1 style={{ fontSize: '2rem', margin: '10px 0 10px 0'}}>Random TV Show Generator</h1>
-      <TVCard />
+      <header className="App-header">
+      <h1>Pokemon</h1>
+
+      <Card />
+      <br />
+      <CardList />
+      </header>
     </div>
+
   );
 }
 

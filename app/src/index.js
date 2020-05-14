@@ -1,25 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { pokemonReducer as reducer } from "./reducers/reducer";
+import './index.css';
 import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import { Provider } from 'react-redux'; // imported Provider to make the store available to the app components wrapped in the connect function
+const store = createStore(reducer, applyMiddleware(thunk))
 
-// imported to create a store object for holding state data
-// imported applyMiddlware to be an argument in the createStore and takes thunk as an argument to allow for async actions
-import { createStore, applyMiddleware } from 'redux'; 
-
-import thunk from 'redux-thunk'; // imported thunk to allow foe async action creators
-import reducer from './reducers/reducer'; // imported reducer to be the argument passed into createStore
-
-// create a redux store using the createStore function
-const store = createStore(reducer, applyMiddleware(thunk)); 
-
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 ReactDOM.render(
-	<Provider store={store}> {/* Pass store to Provider as props so components can access it */}
-		<App />
-	</Provider>,
-	rootElement
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
 );
 
 // If you want your app to work offline and load faster, you can change
