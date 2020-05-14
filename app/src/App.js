@@ -10,7 +10,7 @@ function App() {
 
     <div className="App">
       <header className="App-header">
-      <h1>Pokemon</h1>
+      <h1>Pokemon Finder/Cards</h1>
 
       <Card />
       <br />

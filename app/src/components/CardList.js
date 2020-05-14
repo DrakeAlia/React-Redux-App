@@ -17,6 +17,7 @@ const CardList = (props) => {
             </div>
           <div className="column">
             <div >
+                {/* displays info on each card */}
               <h3>{pokemon.name}</h3>
                 <p>Number: {pokemon.number}</p>
                 <p>Rarity: {pokemon.rarity}</p>
